@@ -220,11 +220,12 @@ def test_check_rv_input():
     assert pb.check_rv_input([1, 2])
     assert pb.check_rv_input(2)
 
-    with pytest.raises(AssertionError,
-                       message="Input value cannot be negative."):
+    # "Input value cannot be negative."
+    with pytest.raises(AssertionError):
         pb.check_rv_input(-1)
-    with pytest.raises(AssertionError,
-                       message="Input value must be an integer."):
+    
+    # "Input value must be an integer."
+    with pytest.raises(AssertionError):
         pb.check_rv_input(1.7)
 
 # PoiBin.check_xi_are_real -----------------------------------------------------
@@ -241,15 +242,16 @@ def test_check_xi_are_real():
 
 def test_check_input_prob():
     """Test the check that input probabilities are between 0 and 1."""
-    with pytest.raises(ValueError,
-                       message="Input must be an one-dimensional array or a"\
-                                + "list."):
+
+    # "Input must be an one-dimensional array or a list."
+    with pytest.raises(ValueError):
         pb = PoiBin([[1, 1], [1, 2]])
-    with pytest.raises(ValueError,
-                       message="Input probabilities have to be non negative."):
+
+    # "Input probabilities have to be non negative."
+    with pytest.raises(ValueError):
         pb = PoiBin([1, -1])
-    with pytest.raises(ValueError,
-                       message="Input probabilities have to be smaller"\
-                               + "than 1."):
+
+    # "Input probabilities have to be smaller than 1."
+    with pytest.raises(ValueError):
         pb = PoiBin([1, 2])
 

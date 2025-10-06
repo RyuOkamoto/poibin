@@ -54,8 +54,8 @@ References:
     http://dx.doi.org/10.1016/j.csda.2012.10.006.
 """
 
-import collections
 import numpy as np
+from typing import Iterable
 
 
 class PoiBin(object):
@@ -149,7 +149,7 @@ class PoiBin(object):
         self.check_rv_input(number_successes)
         i = 0
         try:
-            isinstance(number_successes, collections.Iterable)
+            isinstance(number_successes, Iterable)
             pvalues = np.array(number_successes, dtype='float')
             # if input is iterable (list, numpy.array):
             for k in number_successes:
